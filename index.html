@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Sport Climbing Grade Converter</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Climbing Grade Converter</title>
+</head>
+<body>
+    <h1>Climbing Grade Converter</h1>
+    
+    <select id="gradeSystem">
+        <option value="French">Yosemite Decimal System</option>
+        <option value="YDS">French Sport</option>
+    </select>
+
+    <select id="gradeInput">
+    </select>
+    
+    <button id="convertButton">Convert</button>
+    
+    <div id="conversionResult"></div>
+
+    <script>
+        const gradeSelects = {
+            French: {
+                "1": "5.1",
+                "2": "5.2",
+                "2+": "5.3",
+                "3-": "5.3-5.4",
+                "3": "5.4",
+                "3+": "5.5",
+                "4a": "5.6",
+                "4b": "5.7",
+                "4c": "5.7-5.8",
+                "5a": "5.8",
+                "5b": "5.9",
+                "5c": "5.10a",
+                "6a": "5.10a - 5.10b",
+                "6a+": "5.10b",
+                "6b": "5.10c",
+                "6b+": "5.10d",
+                "6c": "5.11a-5.11b",
+                "6c+": "5.11c",
+                "7a": "5.11d",
+                "7a+": "5.12a",
+                "7b": "5.12b",
+                "7b+": "5.12c",
+                "7c": "5.12d",
+                "7c+": "5.13a",
+                "8a": "5.13b",
+                "8a+": "5.13c",
+                "8b": "5.13d",
+                "8b+": "5.14a",
+                "8c": "5.14b",
+                "8c+": "5.14c",
+                "9a": "5.14d",
+                "9a+": "5.15a",
+                "9b": "5.15b",
+                "9b+": "5.15c",
+                "9c": "5.15d",
+                "9c+": "5.16a"
+            },
+            YDS: {
+                "5.1": "1",
+                "5.2": "2",
+                "5.3": "2+",
+                "5.3-5.4": "3-",
+                "5.4": "3",
+                "5.5": "3+",
+                "5.6": "4a",
+                "5.7": "4b",
+                "5.7-5.8": "4c",
+                "5.8": "5a",
+                "5.9": "5b",
+                "5.10a": "5c",
+                "5.10a - 5.10b": "6a",
+                "5.10b": "6a+",
+                "5.10c": "6b",
+                "5.10d": "6b+",
+                "5.11a-5.11b": "6c",
+                "5.11c": "6c+",
+                "5.11d": "7a",
+                "5.12a": "7a+",
+                "5.12b": "7b",
+                "5.12c": "7b+",
+                "5.12d": "7c",
+                "5.13a": "7c+",
+                "5.13b": "8a",
+                "5.13c": "8a+",
+                "5.13d": "8b",
+                "5.14a": "8b+",
+                "5.14b": "8c",
+                "5.14c": "8c+",
+                "5.14d": "9a",
+                "5.15a": "9a+",
+                "5.15b": "9b",
+                "5.15c": "9b+",
+                "5.15d": "9c",
+                "5.16a": "9c+"
+            }
+        };
+
+        const gradeSystemSelect = document.getElementById("gradeSystem");
+        const gradeInputSelect = document.getElementById("gradeInput");
+        const convertButton = document.getElementById("convertButton");
+        const conversionResult = document.getElementById("conversionResult");
+
+        gradeSystemSelect.addEventListener("change", function() {
+            const selectedSystem = gradeSystemSelect.value;
+            const options = gradeSelects[selectedSystem];
+
+            // Clear the previous options
+            gradeInputSelect.innerHTML = "";
+
+            for (const grade in options) {
+                const option = document.createElement("option");
+                option.value = grade;
+                option.textContent = options[grade];
+                gradeInputSelect.appendChild(option);
+            }
+        });
+
+        convertButton.addEventListener("click", function() {
+            const selectedSystem = gradeSystemSelect.value;
+            const selectedGrade = gradeInputSelect.value;
+
+            conversionResult.textContent = `Selected Grade: ${selectedGrade} in ${selectedSystem}`;
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
